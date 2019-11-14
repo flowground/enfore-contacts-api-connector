@@ -1,0 +1,81 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "required": [
+                "id",
+                "number",
+                "type",
+                "usage_context"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "NOT_QUALIFIED",
+                        "DIRECT_EXTENSION",
+                        "DIRECT_FAX",
+                        "DIRECT_LINE",
+                        "FAX_LINE",
+                        "FIXED_LINE",
+                        "HOME_FAX",
+                        "HOME_PHONE",
+                        "HOTLINE",
+                        "MAIN",
+                        "MAIN_FAX",
+                        "MOBILE",
+                        "PAGER",
+                        "PERSONAL_MOBILE",
+                        "SAT",
+                        "VIRTUAL_LINE",
+                        "VOIP_LINE",
+                        "WORK_MOBILE"
+                    ]
+                },
+                "number": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "usages": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "EVERYTHING",
+                            "CALL",
+                            "SMS",
+                            "WHATSAPP"
+                        ]
+                    }
+                },
+                "usage_context": {
+                    "type": "string",
+                    "enum": [
+                        "ORGANIZATION",
+                        "PERSONAL",
+                        "PROFESSIONAL"
+                    ]
+                }
+            }
+        },
+        "org_id": {
+            "required": true,
+            "type": "string"
+        },
+        "contact_id": {
+            "required": true,
+            "type": "string"
+        },
+        "phone_id": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

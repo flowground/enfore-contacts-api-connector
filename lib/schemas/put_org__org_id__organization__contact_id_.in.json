@@ -1,0 +1,121 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "required": [
+                "id",
+                "name"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "external_id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "founded": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "representatives": {
+                    "type": "array",
+                    "readOnly": true,
+                    "items": {
+                        "required": [
+                            "is_active",
+                            "professional_identity"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "professional_identity": {
+                                "required": [
+                                    "contact_id",
+                                    "professional_identity_id"
+                                ],
+                                "type": "object",
+                                "properties": {
+                                    "contact_id": {
+                                        "type": "string",
+                                        "description": "ID of corresponding individual contact"
+                                    },
+                                    "professional_identity_id": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "is_active": {
+                                "type": "boolean"
+                            },
+                            "activation_date": {
+                                "type": "string",
+                                "description": "Date time is of format yyyy-MM-dd'T'HH:mm:ss'Z' and always UTC. Be aware that 'T' and 'Z' are constants and hours are in 24 hour format.",
+                                "format": "date-time",
+                                "example": "2017-07-07T13:00:00Z"
+                            },
+                            "deactivation_date": {
+                                "type": "string",
+                                "description": "Date time is of format yyyy-MM-dd'T'HH:mm:ss'Z' and always UTC. Be aware that 'T' and 'Z' are constants and hours are in 24 hour format.",
+                                "format": "date-time",
+                                "example": "2017-07-07T13:00:00Z"
+                            }
+                        }
+                    }
+                },
+                "founders": {
+                    "type": "array",
+                    "description": "The founders of the organization.\nThe array contains the IDs for accessing the professional identities of the founders of the organization.\n",
+                    "items": {
+                        "required": [
+                            "contact_id",
+                            "professional_identity_id"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "contact_id": {
+                                "type": "string",
+                                "description": "ID of corresponding individual contact"
+                            },
+                            "professional_identity_id": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "leaders": {
+                    "type": "array",
+                    "description": "The leaders of the organization.\nThe array contains the IDs for accessing the professional identities of the leaders of the organization.\n",
+                    "items": {
+                        "required": [
+                            "contact_id",
+                            "professional_identity_id"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "contact_id": {
+                                "type": "string",
+                                "description": "ID of corresponding individual contact"
+                            },
+                            "professional_identity_id": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "description": "Represents an organization or business.\n"
+        },
+        "org_id": {
+            "required": true,
+            "type": "string"
+        },
+        "contact_id": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,75 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "required": [
+                "id",
+                "type",
+                "url",
+                "usage_context"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "NOT_QUALIFIED",
+                        "BLOG",
+                        "FACEBOOK_PAGE_OR_PROFILE",
+                        "GOOGLE_PLUS_PROFILE",
+                        "HOMEPAGE_OR_WEBSITE",
+                        "LINKEDIN_PROFILE",
+                        "ONLINE_STORE",
+                        "ORGANIZATION_BLOG",
+                        "ORGANIZATION_PROFILE",
+                        "ORGANIZATION_WEBSITE",
+                        "OTHER",
+                        "PERSONAL_BLOG",
+                        "PERSONAL_PROFILE",
+                        "PERSONAL_WEBSITE",
+                        "PROFESSIONAL_BLOG",
+                        "PROFESSIONAL_PROFILE",
+                        "PROFESSIONAL_WEBSITE",
+                        "TWITTER_PROFILE",
+                        "TWITTER_STREAM",
+                        "XING_PROFILE",
+                        "YELP_IMAGE",
+                        "INSTAGRAM_PROFILE",
+                        "YOUTUBE"
+                    ]
+                },
+                "url": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "usage_context": {
+                    "type": "string",
+                    "enum": [
+                        "ORGANIZATION",
+                        "PERSONAL",
+                        "PROFESSIONAL"
+                    ]
+                }
+            }
+        },
+        "org_id": {
+            "required": true,
+            "type": "string"
+        },
+        "contact_id": {
+            "required": true,
+            "type": "string"
+        },
+        "professional_identity_id": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

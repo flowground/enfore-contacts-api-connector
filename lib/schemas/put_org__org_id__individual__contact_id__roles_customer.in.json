@@ -1,0 +1,107 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "required": [
+                "customer_id",
+                "customer_since",
+                "is_active",
+                "is_suspended"
+            ],
+            "type": "object",
+            "properties": {
+                "customer_id": {
+                    "type": "string"
+                },
+                "is_active": {
+                    "type": "boolean"
+                },
+                "is_suspended": {
+                    "type": "boolean"
+                },
+                "customer_since": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "managed_by": {
+                    "required": [
+                        "contact_id",
+                        "professional_identity_id"
+                    ],
+                    "type": "object",
+                    "properties": {
+                        "contact_id": {
+                            "type": "string",
+                            "description": "ID of corresponding individual contact"
+                        },
+                        "professional_identity_id": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "external_card": {
+                    "required": [
+                        "added",
+                        "number"
+                    ],
+                    "type": "object",
+                    "properties": {
+                        "number": {
+                            "type": "string"
+                        },
+                        "added": {
+                            "type": "string",
+                            "description": "Date time is of format yyyy-MM-dd'T'HH:mm:ss'Z' and always UTC. Be aware that 'T' and 'Z' are constants and hours are in 24 hour format.",
+                            "format": "date-time",
+                            "readOnly": true,
+                            "example": "2017-07-07T13:00:00Z"
+                        }
+                    }
+                },
+                "tax_information": {
+                    "required": [
+                        "enabled_tax_exemptions"
+                    ],
+                    "type": "object",
+                    "properties": {
+                        "eu_vat_number": {
+                            "maxLength": 14,
+                            "minLength": 3,
+                            "type": "string",
+                            "description": "VAT identification number that can be used on invoices in EU countries.\n"
+                        },
+                        "tax_registration_number": {
+                            "maxLength": 14,
+                            "minLength": 9,
+                            "type": "string",
+                            "description": "Tax registration number of the customer.\n"
+                        },
+                        "enabled_tax_exemptions": {
+                            "type": "array",
+                            "description": "The list of tax exemption reasons that are enabled for use with that customer.\n",
+                            "items": {
+                                "type": "string",
+                                "description": "Reasons for not applying tax on a product sale.",
+                                "enum": [
+                                    "UNIVERSAL_POSTAL_SERVICE_DE",
+                                    "INTRA_COMMUNITY_TRADE_EU",
+                                    "THIRD_PARTY_COUNTRY_DELIVERY_EU",
+                                    "REVERSE_CHARGE_EU"
+                                ]
+                            }
+                        }
+                    },
+                    "description": "Tax information about a customer.\n"
+                }
+            }
+        },
+        "org_id": {
+            "required": true,
+            "type": "string"
+        },
+        "contact_id": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

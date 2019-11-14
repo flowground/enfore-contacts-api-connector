@@ -1,0 +1,78 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "required": [
+                "id",
+                "is_active",
+                "organization_contact"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "organization_contact": {
+                    "type": "string",
+                    "description": "The ID of the OrganizationContact that the IndividualContact owning the ProfessionalIdentity represents.\n"
+                },
+                "is_active": {
+                    "type": "boolean"
+                },
+                "job_title": {
+                    "type": "string"
+                },
+                "departments": {
+                    "type": "array",
+                    "description": "The departments of the represented organization that the person works at.\nThe array contains the IDs which reference Department items that belong to the OrganizationContact referenced by the PIs \"organization_contact\" field.\n",
+                    "items": {
+                        "required": [
+                            "contact_id",
+                            "department_id"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "contact_id": {
+                                "type": "string",
+                                "description": "ID of corresponding organization contact"
+                            },
+                            "department_id": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "locations": {
+                    "type": "array",
+                    "description": "The locations of the represented organization that the person works at.\nThe array contains the IDs which reference Location items that belong to the OrganizationContact referenced by the PIs \"organization_contact\" field.\n",
+                    "items": {
+                        "required": [
+                            "contact_id",
+                            "location_id"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "contact_id": {
+                                "type": "string",
+                                "description": "ID of corresponding organization contact"
+                            },
+                            "location_id": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "description": "A professional identity represents that an individual contact represents (e.g., works for) an organization.\n"
+        },
+        "org_id": {
+            "required": true,
+            "type": "string"
+        },
+        "contact_id": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

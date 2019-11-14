@@ -1,0 +1,21 @@
+{
+    "type": "object",
+    "properties": {
+        "org_id": {
+            "required": true,
+            "type": "string"
+        },
+        "contact_id": {
+            "required": true,
+            "type": "string"
+        },
+        "professional_identity_id": {
+            "required": true,
+            "type": "string"
+        },
+        "email_id": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

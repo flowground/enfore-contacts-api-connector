@@ -1,0 +1,15 @@
+{
+    "name": "enfore-contacts-api-connector",
+    "version": "0.3.1",
+    "description": "enfore API for managing contacts (incl. customers and suppliers)\n\nContacts are entities that the organization has dealings with.\nContacts can be split into individual contacts (i.e., human persons) and organization contacts (i.e., other organizations/businesses).\nAdditionally, contacts can have roles such as being a supplier or a customer. A single contact can have multiple roles. I.e., a supplier can also be a customer.\n",
+    "main": "component.json",
+    "dependencies": {
+        "elasticio-node": "0.0.9",
+        "elasticio-sailor-nodejs": "^2.2.1",
+        "swagger-client": "^3.8.22"
+    },
+    "author": {
+        "name": "Deutsche Telekom AG"
+    },
+    "license": "Apache-2.0"
+}

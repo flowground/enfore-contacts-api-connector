@@ -1,0 +1,99 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "required": [
+                "is_active",
+                "supplier_id",
+                "supplier_since"
+            ],
+            "type": "object",
+            "properties": {
+                "supplier_id": {
+                    "type": "string"
+                },
+                "is_active": {
+                    "type": "boolean"
+                },
+                "supplier_since": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "managed_by": {
+                    "required": [
+                        "contact_id",
+                        "professional_identity_id"
+                    ],
+                    "type": "object",
+                    "properties": {
+                        "contact_id": {
+                            "type": "string",
+                            "description": "ID of corresponding individual contact"
+                        },
+                        "professional_identity_id": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "my_customer_id": {
+                    "type": "string"
+                },
+                "tax_information": {
+                    "discriminator": {
+                        "propertyName": "@type"
+                    },
+                    "oneOf": [
+                        {
+                            "type": "object",
+                            "properties": {
+                                "eu_vat_number": {
+                                    "maxLength": 14,
+                                    "minLength": 3,
+                                    "type": "string",
+                                    "description": "VAT identification number that can be used on invoices in EU countries.\n"
+                                },
+                                "tax_registration_number": {
+                                    "maxLength": 14,
+                                    "minLength": 9,
+                                    "type": "string",
+                                    "description": "Tax registration number of the supplier.\n"
+                                }
+                            },
+                            "description": "Simply sets and unsets EU VAT number, Tax Registration number or both\n"
+                        },
+                        {
+                            "required": [
+                                "eu_vat_number",
+                                "tax_registration_number"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "eu_vat_number": {
+                                    "maxLength": 14,
+                                    "minLength": 3,
+                                    "type": "string",
+                                    "description": "VAT identification number that can be used on invoices in EU countries.\n"
+                                },
+                                "tax_registration_number": {
+                                    "maxLength": 14,
+                                    "minLength": 9,
+                                    "type": "string",
+                                    "description": "Tax registration number of the supplier.\n"
+                                }
+                            },
+                            "description": "Mark this supplier as a provider of escrow sales items.\nIt still can work as a \"normal\" supplier.\n"
+                        }
+                    ]
+                }
+            }
+        },
+        "org_id": {
+            "required": true,
+            "type": "string"
+        },
+        "contact_id": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

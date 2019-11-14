@@ -1,0 +1,1251 @@
+{
+    "title": "enfore Contacts API",
+    "description": "enfore API for managing contacts (incl. customers and suppliers)\n\nContacts are entities that the organization has dealings with.\nContacts can be split into individual contacts (i.e., human persons) and organization contacts (i.e., other organizations/businesses).\nAdditionally, contacts can have roles such as being a supplier or a customer. A single contact can have multiple roles. I.e., a supplier can also be a customer.\n",
+    "docsUrl": "",
+    "url": "http://localhost",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://external-stable.dev.enfore.de/contacts - Stable",
+                    "https://external.apis.enfore.com/contacts - Production",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "get_org__org_id__individual": {
+            "main": "./lib/actions/get_org__org_id__individual.js",
+            "title": "Load all individual contacts from an organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__individual.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_org__org_id__individual": {
+            "main": "./lib/actions/post_org__org_id__individual.js",
+            "title": "Add a new IndividualContact to the organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_org__org_id__individual.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__individual__contact_id_": {
+            "main": "./lib/actions/get_org__org_id__individual__contact_id_.js",
+            "title": "Load an IndividualContact by its identifier",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__individual__contact_id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "put_org__org_id__individual__contact_id_": {
+            "main": "./lib/actions/put_org__org_id__individual__contact_id_.js",
+            "title": "Full update of an IndividualContact",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/put_org__org_id__individual__contact_id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__individual__contact_id__full": {
+            "main": "./lib/actions/get_org__org_id__individual__contact_id__full.js",
+            "title": "Load an IndividualContact with Subresources by its identifier",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__individual__contact_id__full.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__individual__contact_id__addresses": {
+            "main": "./lib/actions/get_org__org_id__individual__contact_id__addresses.js",
+            "title": "Get all addresses of a contact.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__individual__contact_id__addresses.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_org__org_id__individual__contact_id__addresses": {
+            "main": "./lib/actions/post_org__org_id__individual__contact_id__addresses.js",
+            "title": "Add a new address to a contact",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_org__org_id__individual__contact_id__addresses.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__individual__contact_id__addresses__address_id_": {
+            "main": "./lib/actions/get_org__org_id__individual__contact_id__addresses__address_id_.js",
+            "title": "Load an address by parent contact and identifier",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__individual__contact_id__addresses__address_id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "put_org__org_id__individual__contact_id__addresses__address_id_": {
+            "main": "./lib/actions/put_org__org_id__individual__contact_id__addresses__address_id_.js",
+            "title": "Full update of an address",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/put_org__org_id__individual__contact_id__addresses__address_id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__individual__contact_id__emails": {
+            "main": "./lib/actions/get_org__org_id__individual__contact_id__emails.js",
+            "title": "Get all emails of a contact.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__individual__contact_id__emails.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_org__org_id__individual__contact_id__emails": {
+            "main": "./lib/actions/post_org__org_id__individual__contact_id__emails.js",
+            "title": "Add a new email to a contact",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_org__org_id__individual__contact_id__emails.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__individual__contact_id__emails__email_id_": {
+            "main": "./lib/actions/get_org__org_id__individual__contact_id__emails__email_id_.js",
+            "title": "Load an email by parent contact and identifier",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__individual__contact_id__emails__email_id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "put_org__org_id__individual__contact_id__emails__email_id_": {
+            "main": "./lib/actions/put_org__org_id__individual__contact_id__emails__email_id_.js",
+            "title": "Full update of an email",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/put_org__org_id__individual__contact_id__emails__email_id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__individual__contact_id__phones": {
+            "main": "./lib/actions/get_org__org_id__individual__contact_id__phones.js",
+            "title": "Get all phones of a contact.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__individual__contact_id__phones.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_org__org_id__individual__contact_id__phones": {
+            "main": "./lib/actions/post_org__org_id__individual__contact_id__phones.js",
+            "title": "Add a new phone to a contact",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_org__org_id__individual__contact_id__phones.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__individual__contact_id__phones__phone_id_": {
+            "main": "./lib/actions/get_org__org_id__individual__contact_id__phones__phone_id_.js",
+            "title": "Load an phone by parent contact and identifier",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__individual__contact_id__phones__phone_id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "put_org__org_id__individual__contact_id__phones__phone_id_": {
+            "main": "./lib/actions/put_org__org_id__individual__contact_id__phones__phone_id_.js",
+            "title": "Full update of an phone",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/put_org__org_id__individual__contact_id__phones__phone_id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__individual__contact_id__web_addresses": {
+            "main": "./lib/actions/get_org__org_id__individual__contact_id__web_addresses.js",
+            "title": "Get all web addresses of a contact.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__individual__contact_id__web_addresses.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_org__org_id__individual__contact_id__web_addresses": {
+            "main": "./lib/actions/post_org__org_id__individual__contact_id__web_addresses.js",
+            "title": "Add a new web address to a contact",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_org__org_id__individual__contact_id__web_addresses.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__individual__contact_id__web_addresses__web_address_id_": {
+            "main": "./lib/actions/get_org__org_id__individual__contact_id__web_addresses__web_address_id_.js",
+            "title": "Load a web address by parent contact and identifier",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__individual__contact_id__web_addresses__web_address_id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "put_org__org_id__individual__contact_id__web_addresses__web_address_id_": {
+            "main": "./lib/actions/put_org__org_id__individual__contact_id__web_addresses__web_address_id_.js",
+            "title": "Full update of a web address",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/put_org__org_id__individual__contact_id__web_addresses__web_address_id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__individual_id_from_external_id__external_id_": {
+            "main": "./lib/actions/get_org__org_id__individual_id_from_external_id__external_id_.js",
+            "title": "Get the mapping of internal to external IDs for individual contacts.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__individual_id_from_external_id__external_id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__individual_id_mapping": {
+            "main": "./lib/actions/get_org__org_id__individual_id_mapping.js",
+            "title": "Get the mapping of internal to external IDs for individual contacts.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__individual_id_mapping.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__individual__contact_id__professional_identities": {
+            "main": "./lib/actions/get_org__org_id__individual__contact_id__professional_identities.js",
+            "title": "Get all professional identities of an IndividualContact.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__individual__contact_id__professional_identities.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_org__org_id__individual__contact_id__professional_identities": {
+            "main": "./lib/actions/post_org__org_id__individual__contact_id__professional_identities.js",
+            "title": "Add a new professional identity to an IndividualContact",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_org__org_id__individual__contact_id__professional_identities.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__individual__contact_id__professional_identities_full": {
+            "main": "./lib/actions/get_org__org_id__individual__contact_id__professional_identities_full.js",
+            "title": "Get all professional identities with Subresources of an IndividualContact.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__individual__contact_id__professional_identities_full.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__individual__contact_id__professional_identities__professional_identity_id_": {
+            "main": "./lib/actions/get_org__org_id__individual__contact_id__professional_identities__professional_identity_id_.js",
+            "title": "Load a ProfessionalIdentity by parent contact and identifier",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__individual__contact_id__professional_identities__professional_identity_id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "put_org__org_id__individual__contact_id__professional_identities__professional_identity_id_": {
+            "main": "./lib/actions/put_org__org_id__individual__contact_id__professional_identities__professional_identity_id_.js",
+            "title": "Full update of a ProfessionalIdentity",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/put_org__org_id__individual__contact_id__professional_identities__professional_identity_id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__individual__contact_id__professional_identities__professional_identity_id__full": {
+            "main": "./lib/actions/get_org__org_id__individual__contact_id__professional_identities__professional_identity_id__full.js",
+            "title": "Load a ProfessionalIdentity with Subresources by parent contact and identifier",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__individual__contact_id__professional_identities__professional_identity_id__full.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__individual__contact_id__professional_identities__professional_identity_id__addresses": {
+            "main": "./lib/actions/get_org__org_id__individual__contact_id__professional_identities__professional_identity_id__addresse.js",
+            "title": "Get all addresses of a professional identity of a contact.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__individual__contact_id__professional_identities__professional_identity_id__addresse.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_org__org_id__individual__contact_id__professional_identities__professional_identity_id__addresses": {
+            "main": "./lib/actions/post_org__org_id__individual__contact_id__professional_identities__professional_identity_id__address.js",
+            "title": "Add a new address to a professional identity of a contact",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_org__org_id__individual__contact_id__professional_identities__professional_identity_id__address.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__individual__contact_id__professional_identities__professional_identity_id__addresses__address_id_": {
+            "main": "./lib/actions/get_org__org_id__individual__contact_id__professional_identities__professional_identity_id__addresse.js",
+            "title": "Load an address by parent contact, professional identity and identifier",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__individual__contact_id__professional_identities__professional_identity_id__addresse.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "put_org__org_id__individual__contact_id__professional_identities__professional_identity_id__addresses__address_id_": {
+            "main": "./lib/actions/put_org__org_id__individual__contact_id__professional_identities__professional_identity_id__addresse.js",
+            "title": "Full update of an address",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/put_org__org_id__individual__contact_id__professional_identities__professional_identity_id__addresse.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__individual__contact_id__professional_identities__professional_identity_id__emails": {
+            "main": "./lib/actions/get_org__org_id__individual__contact_id__professional_identities__professional_identity_id__emails.js",
+            "title": "Get all emails of a professional identity of a contact.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__individual__contact_id__professional_identities__professional_identity_id__emails.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_org__org_id__individual__contact_id__professional_identities__professional_identity_id__emails": {
+            "main": "./lib/actions/post_org__org_id__individual__contact_id__professional_identities__professional_identity_id__emails.js",
+            "title": "Add a new email to a professional identity of a contact",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_org__org_id__individual__contact_id__professional_identities__professional_identity_id__emails.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__individual__contact_id__professional_identities__professional_identity_id__emails__email_id_": {
+            "main": "./lib/actions/get_org__org_id__individual__contact_id__professional_identities__professional_identity_id__emails__.js",
+            "title": "Load an email by parent contact, professional identity and identifier",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__individual__contact_id__professional_identities__professional_identity_id__emails__.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "put_org__org_id__individual__contact_id__professional_identities__professional_identity_id__emails__email_id_": {
+            "main": "./lib/actions/put_org__org_id__individual__contact_id__professional_identities__professional_identity_id__emails__.js",
+            "title": "Full update of an email",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/put_org__org_id__individual__contact_id__professional_identities__professional_identity_id__emails__.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__individual__contact_id__professional_identities__professional_identity_id__phones": {
+            "main": "./lib/actions/get_org__org_id__individual__contact_id__professional_identities__professional_identity_id__phones.js",
+            "title": "Get all phones of a professional identity of a contact.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__individual__contact_id__professional_identities__professional_identity_id__phones.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_org__org_id__individual__contact_id__professional_identities__professional_identity_id__phones": {
+            "main": "./lib/actions/post_org__org_id__individual__contact_id__professional_identities__professional_identity_id__phones.js",
+            "title": "Add a new phone to a professional identity of a contact",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_org__org_id__individual__contact_id__professional_identities__professional_identity_id__phones.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__individual__contact_id__professional_identities__professional_identity_id__phones__phone_id_": {
+            "main": "./lib/actions/get_org__org_id__individual__contact_id__professional_identities__professional_identity_id__phones__.js",
+            "title": "Load an phone by parent contact, professional identity and identifier",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__individual__contact_id__professional_identities__professional_identity_id__phones__.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "put_org__org_id__individual__contact_id__professional_identities__professional_identity_id__phones__phone_id_": {
+            "main": "./lib/actions/put_org__org_id__individual__contact_id__professional_identities__professional_identity_id__phones__.js",
+            "title": "Full update of an phone",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/put_org__org_id__individual__contact_id__professional_identities__professional_identity_id__phones__.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__individual__contact_id__professional_identities__professional_identity_id__web_addresses": {
+            "main": "./lib/actions/get_org__org_id__individual__contact_id__professional_identities__professional_identity_id__web_addr.js",
+            "title": "Get all web addresses of a professional identity of a contact.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__individual__contact_id__professional_identities__professional_identity_id__web_addr.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_org__org_id__individual__contact_id__professional_identities__professional_identity_id__web_addresses": {
+            "main": "./lib/actions/post_org__org_id__individual__contact_id__professional_identities__professional_identity_id__web_add.js",
+            "title": "Add a new web address to a professional identity of a contact",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_org__org_id__individual__contact_id__professional_identities__professional_identity_id__web_add.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__individual__contact_id__professional_identities__professional_identity_id__web_addresses__web_address_id_": {
+            "main": "./lib/actions/get_org__org_id__individual__contact_id__professional_identities__professional_identity_id__web_addr.js",
+            "title": "Load a web address by parent contact, professional identity and identifier",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__individual__contact_id__professional_identities__professional_identity_id__web_addr.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "put_org__org_id__individual__contact_id__professional_identities__professional_identity_id__web_addresses__web_address_id_": {
+            "main": "./lib/actions/put_org__org_id__individual__contact_id__professional_identities__professional_identity_id__web_addr.js",
+            "title": "Full update of a web address",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/put_org__org_id__individual__contact_id__professional_identities__professional_identity_id__web_addr.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__individual__contact_id__roles_customer": {
+            "main": "./lib/actions/get_org__org_id__individual__contact_id__roles_customer.js",
+            "title": "get_org__org_id__individual__contact_id__roles_customer",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__individual__contact_id__roles_customer.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "put_org__org_id__individual__contact_id__roles_customer": {
+            "main": "./lib/actions/put_org__org_id__individual__contact_id__roles_customer.js",
+            "title": "put_org__org_id__individual__contact_id__roles_customer",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/put_org__org_id__individual__contact_id__roles_customer.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__individual__contact_id__roles_supplier": {
+            "main": "./lib/actions/get_org__org_id__individual__contact_id__roles_supplier.js",
+            "title": "get_org__org_id__individual__contact_id__roles_supplier",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__individual__contact_id__roles_supplier.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "put_org__org_id__individual__contact_id__roles_supplier": {
+            "main": "./lib/actions/put_org__org_id__individual__contact_id__roles_supplier.js",
+            "title": "put_org__org_id__individual__contact_id__roles_supplier",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/put_org__org_id__individual__contact_id__roles_supplier.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__organization": {
+            "main": "./lib/actions/get_org__org_id__organization.js",
+            "title": "Load all organization contacts from an organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__organization.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_org__org_id__organization": {
+            "main": "./lib/actions/post_org__org_id__organization.js",
+            "title": "Add a new OrganizationContact to the organization",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_org__org_id__organization.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__organization__contact_id_": {
+            "main": "./lib/actions/get_org__org_id__organization__contact_id_.js",
+            "title": "Load an OrganizationContact by its identifier",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__organization__contact_id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "put_org__org_id__organization__contact_id_": {
+            "main": "./lib/actions/put_org__org_id__organization__contact_id_.js",
+            "title": "Full update of an OrganizationContact",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/put_org__org_id__organization__contact_id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__organization__contact_id__full": {
+            "main": "./lib/actions/get_org__org_id__organization__contact_id__full.js",
+            "title": "Load an OrganizationContact with Subresources by its identifier",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__organization__contact_id__full.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__organization__contact_id__addresses": {
+            "main": "./lib/actions/get_org__org_id__organization__contact_id__addresses.js",
+            "title": "Get all addresses of a contact.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__organization__contact_id__addresses.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_org__org_id__organization__contact_id__addresses": {
+            "main": "./lib/actions/post_org__org_id__organization__contact_id__addresses.js",
+            "title": "Add a new address to a contact",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_org__org_id__organization__contact_id__addresses.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__organization__contact_id__addresses__address_id_": {
+            "main": "./lib/actions/get_org__org_id__organization__contact_id__addresses__address_id_.js",
+            "title": "Load an address by parent contact and identifier",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__organization__contact_id__addresses__address_id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "put_org__org_id__organization__contact_id__addresses__address_id_": {
+            "main": "./lib/actions/put_org__org_id__organization__contact_id__addresses__address_id_.js",
+            "title": "Full update of an address",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/put_org__org_id__organization__contact_id__addresses__address_id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__organization__contact_id__emails": {
+            "main": "./lib/actions/get_org__org_id__organization__contact_id__emails.js",
+            "title": "Get all emails of a contact.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__organization__contact_id__emails.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_org__org_id__organization__contact_id__emails": {
+            "main": "./lib/actions/post_org__org_id__organization__contact_id__emails.js",
+            "title": "Add a new email to a contact",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_org__org_id__organization__contact_id__emails.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__organization__contact_id__emails__email_id_": {
+            "main": "./lib/actions/get_org__org_id__organization__contact_id__emails__email_id_.js",
+            "title": "Load an email by parent contact and identifier",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__organization__contact_id__emails__email_id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "put_org__org_id__organization__contact_id__emails__email_id_": {
+            "main": "./lib/actions/put_org__org_id__organization__contact_id__emails__email_id_.js",
+            "title": "Full update of an email",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/put_org__org_id__organization__contact_id__emails__email_id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__organization__contact_id__phones": {
+            "main": "./lib/actions/get_org__org_id__organization__contact_id__phones.js",
+            "title": "Get all phones of a contact.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__organization__contact_id__phones.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_org__org_id__organization__contact_id__phones": {
+            "main": "./lib/actions/post_org__org_id__organization__contact_id__phones.js",
+            "title": "Add a new phone to a contact",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_org__org_id__organization__contact_id__phones.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__organization__contact_id__phones__phone_id_": {
+            "main": "./lib/actions/get_org__org_id__organization__contact_id__phones__phone_id_.js",
+            "title": "Load an phone by parent contact and identifier",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__organization__contact_id__phones__phone_id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "put_org__org_id__organization__contact_id__phones__phone_id_": {
+            "main": "./lib/actions/put_org__org_id__organization__contact_id__phones__phone_id_.js",
+            "title": "Full update of an phone",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/put_org__org_id__organization__contact_id__phones__phone_id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__organization__contact_id__web_addresses": {
+            "main": "./lib/actions/get_org__org_id__organization__contact_id__web_addresses.js",
+            "title": "Get all web addresses of a contact.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__organization__contact_id__web_addresses.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "post_org__org_id__organization__contact_id__web_addresses": {
+            "main": "./lib/actions/post_org__org_id__organization__contact_id__web_addresses.js",
+            "title": "Add a new web address to a contact",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/post_org__org_id__organization__contact_id__web_addresses.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__organization__contact_id__web_addresses__web_address_id_": {
+            "main": "./lib/actions/get_org__org_id__organization__contact_id__web_addresses__web_address_id_.js",
+            "title": "Load a web address by parent contact and identifier",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__organization__contact_id__web_addresses__web_address_id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "put_org__org_id__organization__contact_id__web_addresses__web_address_id_": {
+            "main": "./lib/actions/put_org__org_id__organization__contact_id__web_addresses__web_address_id_.js",
+            "title": "Full update of a web address",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/put_org__org_id__organization__contact_id__web_addresses__web_address_id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__organization_id_from_external_id__external_id_": {
+            "main": "./lib/actions/get_org__org_id__organization_id_from_external_id__external_id_.js",
+            "title": "Get the mapping of internal to external IDs for organization contacts.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__organization_id_from_external_id__external_id_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__organization_id_mapping": {
+            "main": "./lib/actions/get_org__org_id__organization_id_mapping.js",
+            "title": "Get the mapping of internal to external IDs for organization contacts.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__organization_id_mapping.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__organization__contact_id__roles_customer": {
+            "main": "./lib/actions/get_org__org_id__organization__contact_id__roles_customer.js",
+            "title": "get_org__org_id__organization__contact_id__roles_customer",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__organization__contact_id__roles_customer.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "put_org__org_id__organization__contact_id__roles_customer": {
+            "main": "./lib/actions/put_org__org_id__organization__contact_id__roles_customer.js",
+            "title": "put_org__org_id__organization__contact_id__roles_customer",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/put_org__org_id__organization__contact_id__roles_customer.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "get_org__org_id__organization__contact_id__roles_supplier": {
+            "main": "./lib/actions/get_org__org_id__organization__contact_id__roles_supplier.js",
+            "title": "get_org__org_id__organization__contact_id__roles_supplier",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_org__org_id__organization__contact_id__roles_supplier.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "put_org__org_id__organization__contact_id__roles_supplier": {
+            "main": "./lib/actions/put_org__org_id__organization__contact_id__roles_supplier.js",
+            "title": "put_org__org_id__organization__contact_id__roles_supplier",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/put_org__org_id__organization__contact_id__roles_supplier.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

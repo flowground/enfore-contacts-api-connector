@@ -1,0 +1,61 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "required": [
+                "address",
+                "id",
+                "type",
+                "usage_context"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "readOnly": true
+                },
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "NOT_QUALIFIED",
+                        "EMAIL_ALIAS",
+                        "MAILING_LIST",
+                        "PERSONAL_EMAIL",
+                        "WORK_EMAIL"
+                    ]
+                },
+                "address": {
+                    "type": "string",
+                    "format": "email"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "usage_context": {
+                    "type": "string",
+                    "enum": [
+                        "ORGANIZATION",
+                        "PERSONAL",
+                        "PROFESSIONAL"
+                    ]
+                }
+            }
+        },
+        "org_id": {
+            "required": true,
+            "type": "string"
+        },
+        "contact_id": {
+            "required": true,
+            "type": "string"
+        },
+        "professional_identity_id": {
+            "required": true,
+            "type": "string"
+        },
+        "email_id": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
